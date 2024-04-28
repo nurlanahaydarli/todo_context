@@ -12,7 +12,7 @@ const FormComponent = ({data}) => {
         id: Math.floor(Math.random() * 1000),
         title: "",
         text: "",
-        isCompleted: true,
+        isCompleted: false,
     }
     let todo_id = data?.id
     const {values, errors, handleChange, handleSubmit, setValues} = useFormik({
@@ -68,7 +68,7 @@ const FormComponent = ({data}) => {
 
     return (
         <>
-            <form
+            <form onSubmit={handleSubmit}
                 className='d-flex flex-column gap-2 align-items-center w-50 bg-light p-4 mx-auto my-auto rounded shadow-sm'>
                 <div className="mb-3 w-100">
                     <label htmlFor="title" className="form-label">Todo title</label>
@@ -84,7 +84,7 @@ const FormComponent = ({data}) => {
                     </textarea>
                     {errors.text && <div className="invalid-feedback">{errors.text}</div>}
                 </div>
-                <button type="button" onClick={handleSubmit} className="btn btn-primary">Submit</button>
+                <button type="submit"  className="btn btn-primary">Submit</button>
             </form>
         </>
     )
